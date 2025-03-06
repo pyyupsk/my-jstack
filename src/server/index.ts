@@ -1,3 +1,5 @@
+import { cors } from "hono/cors"
+
 import { j } from "./jstack"
 import { postRouter } from "./routers/post-router"
 
@@ -7,7 +9,18 @@ import { postRouter } from "./routers/post-router"
  *
  * @see https://jstack.app/docs/backend/app-router
  */
-const api = j.router().basePath("/api").use(j.defaults.cors).onError(j.defaults.errorHandler)
+const api = j
+  .router()
+  .basePath("/api")
+  .use(
+    cors({
+      allowHeaders: ["x-is-superjson", "content-type"],
+      exposeHeaders: ["x-is-superjson"],
+      origin: "https://my-jstack.vercel.app",
+      credentials: true,
+    }),
+  )
+  .onError(j.defaults.errorHandler)
 
 /**
  * This is the main router for your server.
