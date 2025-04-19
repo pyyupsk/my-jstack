@@ -22,7 +22,7 @@ const eslintConfig = tseslint.config(
         ...globals.node,
         React: true,
       },
-      parserOptions: { parser: tseslint.parser }
+      parserOptions: { parser: tseslint.parser },
     },
   },
   {
