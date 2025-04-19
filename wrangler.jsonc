@@ -1,13 +1,15 @@
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "compatibility_date": "2025-04-10",
   "name": "my-jstack",
   "main": "src/server/index.ts",
-  "dev": {
-    "port": 8080
-  }
+  "compatibility_date": "2025-04-10",
+  "observability": {
+      "enabled": true
+    },
+    "placement": {
+      "mode": "smart"
+    },
+    "dev": {
+      "port": 8080
+    }
 }
