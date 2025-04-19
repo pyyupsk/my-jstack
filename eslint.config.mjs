@@ -14,10 +14,7 @@ const eslintConfig = tseslint.config(
     extends: ["next/core-web-vitals", "next/typescript", "plugin:drizzle/recommended"],
     plugins: ["drizzle"],
   }),
-  ...tseslint.configs.recommended,
   eslint.configs.recommended,
-  { files: ["**/*.{js,mjs,cjs,ts,vue}"] },
-  { files: ["**/*.vue"], languageOptions: { parserOptions: { parser: tseslint.parser } } },
   {
     languageOptions: {
       globals: {
@@ -25,6 +22,7 @@ const eslintConfig = tseslint.config(
         ...globals.node,
         React: true,
       },
+      parserOptions: { parser: tseslint.parser }
     },
   },
   {
