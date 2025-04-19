@@ -13,10 +13,14 @@ export const postRouter = j.router({
   }),
 
   create: publicProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(z.object({ name: z.string() }))
     .mutation(async ({ ctx, c, input }) => {
       const { name } = input
       const { db } = ctx
+
+      if (!name) {
+        return c.newResponse("Name is required, please try again", { status: 400 })
+      }
 
       const post = await db.insert(posts).values({ name })
 

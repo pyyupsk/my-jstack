@@ -31,7 +31,7 @@ export function RecentPost() {
       setName("")
     },
     onError: (err) => {
-      toast(err.message)
+      toast.error(err.message)
     },
   })
 
