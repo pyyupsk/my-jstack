@@ -13,6 +13,8 @@
     "format": "prettier --write . --list-different --cache",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "server:deploy": "wrangler deploy",
+    "server:dev": "wrangler dev",
     "start": "dotenvx run -- next start"
   },
   "dependencies": {

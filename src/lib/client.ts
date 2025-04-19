@@ -1,6 +1,5 @@
 import type { AppRouter } from "@/server"
 
-import dotenvx from "@dotenvx/dotenvx"
 import { createClient } from "jstack"
 
 /**
@@ -13,8 +12,8 @@ export const client = createClient<AppRouter>({
 
 function getBaseUrl() {
   // 👇 In production, use the production worker
-  if (dotenvx.get("NODE_ENV") === "production") {
-    return dotenvx.get("NEXT_PUBLIC_WORKER_URL") // Ex: "https://my-jstack.username.workers.dev"
+  if (process.env.NODE_ENV === "production") {
+    return process.env.NEXT_PUBLIC_WORKER_URL // Ex: "https://my-jstack.username.workers.dev"
   }
 
   // 👇 Locally, use wrangler backend
